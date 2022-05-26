@@ -70,3 +70,16 @@ function ubah($data)
   mysqli_query($db, $query) or die(mysqli_error($db));
   return mysqli_affected_rows($db);
 }
+
+function cari($keyword) {
+  $db = koneksi();
+  $query = "SELECT * FROM mahasiswa WHERE nama LIKE '%$keyword' OR nrp LIKE '$keyword' OR email LIKE '$keyword'";
+  $result = mysqli_query($db, $query);
+
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+
+  return $rows;
+}
