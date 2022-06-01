@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2022 at 04:15 PM
+-- Generation Time: Jun 01, 2022 at 06:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -62,8 +62,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'admin'),
-(2, 'wildan', '123');
+(3, '11111111', '$2y$10$./YobFbb3KMbryNgTCBYIuP5/mpofItfA/gOR./0kCQMxg5g.40cW'),
+(4, '123', '$2y$10$Tll3sm1aXzIL89e9iN.QxeHctQKpm8wtICsy6xnwBhK4F.nB/EMQO'),
+(5, 'admin', '$2y$10$dv0O/1yeVBgDRA9sA5TvLevYkbKnCV6YTytF4Z96jXMA2hytm0u0.');
 
 --
 -- Indexes for dumped tables
@@ -95,7 +96,7 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

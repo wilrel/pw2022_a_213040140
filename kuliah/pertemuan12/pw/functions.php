@@ -89,17 +89,75 @@ function login ($data) {
 
   $username = htmlspecialchars($data['username']);
   $password = htmlspecialchars($data['password']);
-
-  if (query("SELECT * FROM user WHERE username = '$username' && password = '$password'")) {
-    //set session 
-    $_SESSION['login'] = true;
-
-    header("Location: index.php");
-    exit;
-  } else {
+// cek username
+  if ($user = query("SELECT * FROM user WHERE username = '$username'")) {
+    // cek password
+    if(password_verify($password, $user['password'])) {
+      //set session 
+      $_SESSION['login'] = true;
+      header("Location: index.php");
+      exit;
+    } 
+  } 
     return [
       'error' => true,
       'pesan' => 'Username / Password Salah !'
     ];
+}
+
+function registrasi ($data)
+{
+  $db = koneksi();
+  $username = htmlspecialchars(strtolower($data['username']));
+  $password1= mysqli_real_escape_string($db, $data['password1']);
+  $password2= mysqli_real_escape_string($db, $data['password2']);
+
+
+// Jika Username atau password kosong
+  if(empty($username) || empty($password1) || empty($password2)) {
+    echo "<script>
+    alert('username / password tidak boleh kosong!');
+    document.location.href = 'registrasi.php';
+    </script>";
+    return false;
+  }  
+
+  // Jika username sudah ada
+  if (query ("SELECT * FROM user WHERE username = '$username'")) {
+    echo "<script>
+      alert('Username Sudah Terpakai!');
+      document.location.href = 'registrasi.php';
+          </script>";
+    return false;
   }
+
+  // Jika Password tidak sesuai
+  if ( $password1 !== $password2) {
+    echo "<script>
+        alert('konfirmasi password tidak sesuai !');
+        document.location.href = 'registrasi.php';
+    </script>";
+    return false;
+  }
+
+  // Jika Password < 5 digit
+  if(strlen($password1) < 8) {
+    echo "<script>
+      alert('Password terlalu pendek, Minimal 8 Digit !');
+      document.location.href = 'registrasi.php';
+        </script>";
+        return false;
+  }
+
+  // Jika Password Dan Username Sesuai
+  // Enkripsi Password
+  $password_baru = password_hash($password1, PASSWORD_DEFAULT);
+  // Insert ke tabel user
+  $query = "INSERT INTO user
+                VALUES 
+            (null, '$username', '$password_baru')
+            ";
+  mysqli_query($db, $query) or die(mysqli_error($db));
+  return mysqli_affected_rows($db);          
+
 }
