@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['login'])) {
+if (!isset($_SESSION['login'])) {
   header("Location: login.php");
   exit;
 }
@@ -30,12 +30,13 @@ if (isset($_POST['tambah'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
   <title>Tambah Data Mahasiswa</title>
 </head>
 
 <body>
   <h3>Form Tambah Data Mahasiswa</h3>
-  <form action="" method="POST">
+  <form action="" method="POST" autocomplete="off" enctype="multipart/form-data">
     <ul>
       <li>
         <label>
@@ -64,7 +65,8 @@ if (isset($_POST['tambah'])) {
       <li>
         <label>
           Gambar :
-          <input type="text" name="gambar" required>
+          <img src="" class="img-thumbnail" width="120" style="display: none;">
+          <input type="file" name="gambar" onchange="previewImage">
         </label>
       </li>
       <li>
