@@ -76,9 +76,21 @@ $data = mysqli_fetch_array($query);
       }
 
       if (isset($_POST['deleteBtn'])) {
+        $queryCheck = mysqli_query($db, "SELECT * FROM produk WHERE id_kategori = '$id'");
+        $dataCount = mysqli_num_rows($queryCheck);
+
+        if ($dataCount > 0) {
+          ?>
+          <div class="alert alert-danger mt-3">
+            Kategori Gagal Dihapus, Dikarenakan masih ada produk
+          </div>
+        <?php
+          die();
+        }
+
         $queryDelete = mysqli_query($db, "DELETE FROM kategori WHERE id = '$id'");
         if ($queryDelete) {
-          ?>
+        ?>
           <div class="alert alert-primary mt-3">
             Kategori Berhasil Dihapus
           </div>
