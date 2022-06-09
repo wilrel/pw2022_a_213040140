@@ -14,7 +14,68 @@
   background-color: #2155CD;
 }
 
+.warna5 {
+  background-color: #F32424;
+}
+
+.warna6 {
+  background-color: rgb(31, 13, 13);
+}
+
 .banner {
-  height: 80vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/download.jpg');
+  height: 50vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/banner.web.png');
+
+}
+
+.highlighted-kategori {
+  height: 230px;
+}
+
+.kategori-vga {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/rtx.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.kategori-ram {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/ram.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.kategori-monitor {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/monitor.jfif');
+  background-size: cover;
+  background-position: center;
+}
+
+.no-decoration {
+  text-decoration: none;
+  color: white;
+}
+
+.no-decoration:hover {
+  color: #F32424;
+}
+
+.image-box {
+  height: 200px;
+}
+
+.image-box img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.banner-produk {
+  height: 30vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/banner.web.png');
+  background-position: 50% 30%;
+}
+
+.list-group a {
+  text-decoration: none;
 }
